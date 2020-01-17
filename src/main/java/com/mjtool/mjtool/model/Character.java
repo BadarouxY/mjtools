@@ -2,37 +2,25 @@ package com.mjtool.mjtool.model;
 
 import net.minidev.json.annotate.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "characters")
 public class Character {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nom;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @JsonIgnore
-    private int exp;
-
-    public int getExp() {
-        return exp;
+    public Character() {
     }
 
-    public Character(int id, String nom, int exp) {
+    public Character(int id, String name) {
         this.id = id;
-        this.nom = nom;
-        this.exp = exp;
-    }
+        this.name = name;
 
-    public void setExp(int exp) {
-        this.exp = exp;
-    }
-
-    public Character(int id, String nom) {
-        this.id = id;
-        this.nom = nom;
     }
 
     public int getId() {
@@ -43,19 +31,19 @@ public class Character {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String nom) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return "Character{" +
                 "id=" + id +
-                ", nom='" + nom + '\'' +
+                ", nom='" + name + '\'' +
                 '}';
     }
 }

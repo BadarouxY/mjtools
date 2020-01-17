@@ -1,8 +1,12 @@
 package com.mjtool.mjtool.web.controller;
 
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.mjtool.mjtool.dao.CharacterDao;
 import com.mjtool.mjtool.model.Character;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,19 +26,29 @@ public class CharacterController {
     private CharacterDao characterDao;
 
     @RequestMapping(value="/characters", method = RequestMethod.GET)
-    public List<Character> characterList() {
-        return characterDao.findAll();
+    public MappingJacksonValue characterList() {
+        Iterable<Character> characters = characterDao.findAll();
+
+        SimpleBeanPropertyFilter monFiltre = SimpleBeanPropertyFilter.serializeAllExcept("prixAchat");
+
+        FilterProvider listDeNosFiltres = new SimpleFilterProvider().addFilter("monFiltreDynamique", monFiltre);
+
+        MappingJacksonValue produitsFiltres = new MappingJacksonValue(characters);
+
+        produitsFiltres.setFilters(listDeNosFiltres);
+
+        return produitsFiltres;
+
     }
+
 
     @RequestMapping(value = "/characters/{id}", method = RequestMethod.GET)
     public Character getCharacter(@PathVariable int id) {
-
-        Character charac = new Character(1, "toto" );
         return characterDao.findById(id);
     }
 
     @PostMapping(value = "/characters")
-    public ResponseEntity<Void> ajouterCharacter(@RequestBody Character charac) {
+    public ResponseEntity<Void> addCharacter(@RequestBody Character charac) {
         Character characterAdded = characterDao.save(charac);
 
         if (characterAdded == null) {
