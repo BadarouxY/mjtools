@@ -1,11 +1,13 @@
 package com.mjtool.mjtool.model;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "characters")
+//@JsonFilter("monFiltreDynamique")
 public class Character {
 
     @Id
@@ -17,10 +19,13 @@ public class Character {
     public Character() {
     }
 
+    public Character(String name) {
+        this.name = name;
+    }
+
     public Character(int id, String name) {
         this.id = id;
         this.name = name;
-
     }
 
     public int getId() {
@@ -35,7 +40,7 @@ public class Character {
         return name;
     }
 
-    public void setName(String nom) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -43,7 +48,7 @@ public class Character {
     public String toString() {
         return "Character{" +
                 "id=" + id +
-                ", nom='" + name + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }
