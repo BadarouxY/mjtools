@@ -43,7 +43,6 @@ public class CharacterController {
 
     }
 
-
     @RequestMapping(value = "/characters/{id}", method = RequestMethod.GET)
     public Character getCharacter(@PathVariable int id) {
         Character charac = characterDao.findById(id);
@@ -53,12 +52,19 @@ public class CharacterController {
         return characterDao.findById(id);
     }
 
+    @RequestMapping(value = "/characters/getnpc", method = RequestMethod.GET)
+    public List<Character> getNpcCharacter() {
+        return characterDao.findByIsNpcTrue();
+    }
+
+    @RequestMapping(value = "/characters/getplayable", method = RequestMethod.GET)
+    public List<Character> getPlayableCharacter() {
+        return characterDao.findByIsNpcFalse();
+    }
+
     @PostMapping(value = "/characters")
     public ResponseEntity<Void> addCharacter(@RequestBody Character charac) {
-        System.out.println(charac);
         Character characterAdded = characterDao.save(charac);
-
-
         if (characterAdded == null) {
             return ResponseEntity.noContent().build();
         }
@@ -70,5 +76,15 @@ public class CharacterController {
 
         return ResponseEntity.created(location).build();
 
+    }
+
+//    @DeleteMapping(value = "/characters/delete/{id}")
+//    public void deleteCharacter(@PathVariable int id) {
+//        characterDao.delete(id);
+//    }
+
+    @PutMapping(value = "/characters/update")
+    public void updateCharacter(@RequestBody Character charac) {
+        characterDao.save(charac);
     }
 }

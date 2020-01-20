@@ -8,9 +8,11 @@ import java.util.List;
 
 @Repository
 public interface CharacterDao extends JpaRepository<Character, Integer> {
-    public List<Character> findAll();
-    public Character findById(int id);
-
-    public Character save(Character character);
+    List<Character> findAll();
+    Character findById(int id);
+    Character save(Character character);
+    List<Character> findByIsNpcTrue();
+    List<Character> findByIsNpcFalse();
+    //void delete(int id);
 
 }
