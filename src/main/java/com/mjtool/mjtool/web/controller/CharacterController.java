@@ -78,10 +78,6 @@ public class CharacterController {
 
     }
 
-//    @DeleteMapping(value = "/characters/delete/{id}")
-//    public void deleteCharacter(@PathVariable int id) {
-//        characterDao.delete(id);
-//    }
 
     @PutMapping(value = "/characters/update")
     public void updateCharacter(@RequestBody Character charac) {

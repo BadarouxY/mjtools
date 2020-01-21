@@ -1,5 +1,7 @@
 package com.mjtool.mjtool.model;
 
+import com.mjtool.mjtool.model.enumeration.*;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -14,15 +16,18 @@ public class Character {
     private String name;
     @Column(name = "surname", nullable = false)
     private String surname;
-    @OneToOne
+    @Enumerated(EnumType.STRING)
+    @Column(name = "race", nullable = false)
     private Race race;
-    @OneToOne
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender", nullable = false)
     private Gender gender;
     @Column(name = "age", nullable = false)
     private int age;
     @OneToOne
     private Career career;
-    @OneToOne
+    @Enumerated(EnumType.STRING)
+    @Column(name = "astral_signe", nullable = false)
     private AstralSign astralSign;
     @Column(name = "is_a_npc", nullable = false)
     private Boolean isNpc;
@@ -32,24 +37,29 @@ public class Character {
     private int weight;
     @Column(name = "exp")
     private int exp;
-    @OneToOne
+    @Enumerated(EnumType.STRING)
+    @Column(name = "hair_color", nullable = false)
     private HairColors hairColor;
-    @OneToOne
+    @Enumerated(EnumType.STRING)
+    @Column(name = "eyes_color", nullable = false)
     private EyesColors eyeColor;
-    @OneToMany
+    @OneToMany(mappedBy="character")
     private Collection<DistinctiveSigns> distinctiveSigns;
     @Column(name = "number_of_siblings")
     private int NumberOfSiblings;
-    @OneToOne
+    @Enumerated(EnumType.STRING)
+    @Column(name = "birthplace", nullable = false)
     private Birthplaces birthplace;
-    @OneToMany
+    @OneToMany(mappedBy="character")
     private Collection<Skills> skills;
-    @OneToMany
+    @OneToMany(mappedBy="character")
     private Collection<Traits> traits;
-    @OneToMany
+    @OneToMany(mappedBy="character")
     private Collection<Spells> spells;
     @Column(name = "notes", columnDefinition="text")
     private String notes;
+    @OneToMany(mappedBy="character")
+    private Collection<Attributes> attributes;
 
 
     public Character(String name) {
@@ -63,6 +73,22 @@ public class Character {
 
     public String getSurname() {
         return surname;
+    }
+
+    public Race getRace() {
+        return race;
+    }
+
+    public void setRace(Race race) {
+        this.race = race;
+    }
+
+    public Collection<Attributes> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(Collection<Attributes> attributes) {
+        this.attributes = attributes;
     }
 
     public void setSurname(String surname) {
@@ -91,14 +117,6 @@ public class Character {
 
     public void setSpells(Collection<Spells> spells) {
         this.spells = spells;
-    }
-
-    public Race getRace() {
-        return race;
-    }
-
-    public void setRace(Race race) {
-        this.race = race;
     }
 
     public Gender getGender() {
@@ -132,8 +150,6 @@ public class Character {
     public void setAstralSign(AstralSign astralSign) {
         this.astralSign = astralSign;
     }
-
-
 
     public int getHeight() {
         return height;

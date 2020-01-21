@@ -1,0 +1,14 @@
+package com.mjtool.mjtool.dao;
+
+import com.mjtool.mjtool.model.Spells;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface SpellsDao extends JpaRepository<Spells, Integer> {
+    List<Spells> findAll();
+    Spells findById(int id);
+    Spells save(Spells spells);
+}
