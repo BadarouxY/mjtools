@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "distinctive_signs")
-public class DistinctiveSigns {
+public class DistinctiveSign {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -18,7 +18,7 @@ public class DistinctiveSigns {
     @Column(name = "name", nullable = false)
     private String name;
 
-    public DistinctiveSigns() {
+    public DistinctiveSign() {
     }
 
     public int getId() {

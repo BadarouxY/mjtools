@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "spells")
-public class Spells {
+public class Spell {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -18,7 +18,7 @@ public class Spells {
     @Column(name = "description", columnDefinition="text")
     private String description;
 
-    public Spells() {
+    public Spell() {
     }
 
     public int getId() {

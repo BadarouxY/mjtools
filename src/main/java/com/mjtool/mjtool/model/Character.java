@@ -18,17 +18,18 @@ public class Character {
     private String surname;
     @Enumerated(EnumType.STRING)
     @Column(name = "race", nullable = false)
-    private Race race;
+    private Races races;
     @Enumerated(EnumType.STRING)
     @Column(name = "gender", nullable = false)
-    private Gender gender;
+    private Genders genders;
     @Column(name = "age", nullable = false)
     private int age;
-    @OneToOne
-    private Career career;
     @Enumerated(EnumType.STRING)
-    @Column(name = "astral_signe", nullable = false)
-    private AstralSign astralSign;
+    @Column(name = "career", nullable = false)
+    private Careers careers;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "astral_sign", nullable = false)
+    private AstralSigns astralSigns;
     @Column(name = "is_a_npc", nullable = false)
     private Boolean isNpc;
     @Column(name = "height", nullable = false)
@@ -44,22 +45,22 @@ public class Character {
     @Column(name = "eyes_color", nullable = false)
     private EyesColors eyeColor;
     @OneToMany(mappedBy="character")
-    private Collection<DistinctiveSigns> distinctiveSigns;
+    private Collection<DistinctiveSign> distinctiveSigns;
     @Column(name = "number_of_siblings")
     private int NumberOfSiblings;
     @Enumerated(EnumType.STRING)
     @Column(name = "birthplace", nullable = false)
     private Birthplaces birthplace;
     @OneToMany(mappedBy="character")
-    private Collection<Skills> skills;
+    private Collection<Skill> skills;
     @OneToMany(mappedBy="character")
-    private Collection<Traits> traits;
+    private Collection<Trait> traits;
     @OneToMany(mappedBy="character")
-    private Collection<Spells> spells;
+    private Collection<Spell> spells;
     @Column(name = "notes", columnDefinition="text")
     private String notes;
     @OneToMany(mappedBy="character")
-    private Collection<Attributes> attributes;
+    private Collection<Attribute> attributes;
 
 
     public Character(String name) {
@@ -75,19 +76,19 @@ public class Character {
         return surname;
     }
 
-    public Race getRace() {
-        return race;
+    public Races getRaces() {
+        return races;
     }
 
-    public void setRace(Race race) {
-        this.race = race;
+    public void setRaces(Races races) {
+        this.races = races;
     }
 
-    public Collection<Attributes> getAttributes() {
+    public Collection<Attribute> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(Collection<Attributes> attributes) {
+    public void setAttributes(Collection<Attribute> attributes) {
         this.attributes = attributes;
     }
 
@@ -95,36 +96,36 @@ public class Character {
         this.surname = surname;
     }
 
-    public Collection<Skills> getSkills() {
+    public Collection<Skill> getSkills() {
         return skills;
     }
 
-    public void setSkills(Collection<Skills> skills) {
+    public void setSkills(Collection<Skill> skills) {
         this.skills = skills;
     }
 
-    public Collection<Traits> getTraits() {
+    public Collection<Trait> getTraits() {
         return traits;
     }
 
-    public void setTraits(Collection<Traits> traits) {
+    public void setTraits(Collection<Trait> traits) {
         this.traits = traits;
     }
 
-    public Collection<Spells> getSpells() {
+    public Collection<Spell> getSpells() {
         return spells;
     }
 
-    public void setSpells(Collection<Spells> spells) {
+    public void setSpells(Collection<Spell> spells) {
         this.spells = spells;
     }
 
-    public Gender getGender() {
-        return gender;
+    public Genders getGenders() {
+        return genders;
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    public void setGenders(Genders genders) {
+        this.genders = genders;
     }
 
     public int getAge() {
@@ -135,20 +136,20 @@ public class Character {
         this.age = age;
     }
 
-    public Career getCareer() {
-        return career;
+    public Careers getCareers() {
+        return careers;
     }
 
-    public void setCareer(Career career) {
-        this.career = career;
+    public void setCareers(Careers careers) {
+        this.careers = careers;
     }
 
-    public AstralSign getAstralSign() {
-        return astralSign;
+    public AstralSigns getAstralSigns() {
+        return astralSigns;
     }
 
-    public void setAstralSign(AstralSign astralSign) {
-        this.astralSign = astralSign;
+    public void setAstralSigns(AstralSigns astralSigns) {
+        this.astralSigns = astralSigns;
     }
 
     public int getHeight() {
@@ -199,11 +200,11 @@ public class Character {
         isNpc = npc;
     }
 
-    public Collection<DistinctiveSigns> getDistinctiveSigns() {
+    public Collection<DistinctiveSign> getDistinctiveSigns() {
         return distinctiveSigns;
     }
 
-    public void setDistinctiveSigns(Collection<DistinctiveSigns> distinctiveSigns) {
+    public void setDistinctiveSigns(Collection<DistinctiveSign> distinctiveSigns) {
         this.distinctiveSigns = distinctiveSigns;
     }
 
@@ -232,19 +233,19 @@ public class Character {
     }
 
 
-    public Character(int id, String name, String surname, Race race, Gender gender, int age,
-                     Career career, AstralSign astralSign, Boolean isNpc, int height, int weight, int exp,
-                     HairColors hairColor, EyesColors eyeColor, Collection<DistinctiveSigns> distinctiveSigns,
-                     int numberOfSiblings, Birthplaces birthplace, Collection<Skills> skills, Collection<Traits> traits,
-                     Collection<Spells> spells, String notes) {
+    public Character(int id, String name, String surname, Races races, Genders genders, int age,
+                     Careers careers, AstralSigns astralSigns, Boolean isNpc, int height, int weight, int exp,
+                     HairColors hairColor, EyesColors eyeColor, Collection<DistinctiveSign> distinctiveSigns,
+                     int numberOfSiblings, Birthplaces birthplace, Collection<Skill> skills, Collection<Trait> traits,
+                     Collection<Spell> spells, String notes) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.race = race;
-        this.gender = gender;
+        this.races = races;
+        this.genders = genders;
         this.age = age;
-        this.career = career;
-        this.astralSign = astralSign;
+        this.careers = careers;
+        this.astralSigns = astralSigns;
         this.isNpc = isNpc;
         this.height = height;
         this.weight = weight;

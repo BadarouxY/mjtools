@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "traits")
-public class Traits {
+@Table(name = "attributes")
+public class Attribute {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -15,10 +15,10 @@ public class Traits {
     private Character character;
     @Column(name = "name")
     private String name;
-    @Column(name = "description", columnDefinition="text")
-    private String description;
+    @Column(name = "value")
+    private int value;
 
-    public Traits() {
+    public Attribute() {
     }
 
     public int getId() {
@@ -45,11 +45,11 @@ public class Traits {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public int getValue() {
+        return value;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setValue(int value) {
+        this.value = value;
     }
 }

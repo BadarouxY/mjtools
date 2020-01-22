@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "skills")
-public class Skills {
+public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -28,7 +28,7 @@ public class Skills {
     @Column(name = "bonus")
     private int bonus;
 
-    public Skills() {
+    public Skill() {
     }
 
     public int getId() {

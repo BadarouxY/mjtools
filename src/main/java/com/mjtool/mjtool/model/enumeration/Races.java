@@ -1,5 +1,5 @@
 package com.mjtool.mjtool.model.enumeration;
 
-public enum Race {
+public enum Races {
     HUMAIN, ELFE, NAIN, HALFLING;
 }

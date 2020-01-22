@@ -5,17 +5,14 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.mjtool.mjtool.dao.CharacterDao;
 import com.mjtool.mjtool.model.Character;
-import com.mjtool.mjtool.web.exceptions.NoCharacterException;
-import org.jboss.logging.Logger;
+import com.mjtool.mjtool.web.exceptions.NoModelException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -47,7 +44,7 @@ public class CharacterController {
     public Character getCharacter(@PathVariable int id) {
         Character charac = characterDao.findById(id);
 
-        if (charac == null) throw new NoCharacterException("No character " + id);
+        if (charac == null) throw new NoModelException("No character " + id);
 
         return characterDao.findById(id);
     }
@@ -77,7 +74,6 @@ public class CharacterController {
         return ResponseEntity.created(location).build();
 
     }
-
 
     @PutMapping(value = "/characters/update")
     public void updateCharacter(@RequestBody Character charac) {
