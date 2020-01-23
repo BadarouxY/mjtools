@@ -7,7 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum Careers {
 
     SERGENT("Sergent", false, true),
-    ASSASSIN("Assassin",false, true);
+    ASSASSIN("Assassin",false, true),
+    SOLDAT("Soldat", true, false);
+
     private String name;
     private Boolean isBasic;
     private Boolean isAdvanced;
@@ -18,10 +20,6 @@ public enum Careers {
         this.isAdvanced = isAdvanced;
         this.value = value;
         name = name();
-    }
-@JsonValue
-    public static Careers[] getCareers() {
-        return Careers.values();
     }
 
     public Boolean getBasic() {

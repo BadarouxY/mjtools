@@ -24,11 +24,12 @@ public class CharacterController {
     @Autowired
     private CharacterDao characterDao;
 
+
     @RequestMapping(value="/characters", method = RequestMethod.GET)
     public MappingJacksonValue characterList() {
         Iterable<Character> characters = characterDao.findAll();
 
-        SimpleBeanPropertyFilter monFiltre = SimpleBeanPropertyFilter.serializeAllExcept("prixAchat");
+        SimpleBeanPropertyFilter monFiltre = SimpleBeanPropertyFilter.serializeAllExcept("");
 
         FilterProvider listDeNosFiltres = new SimpleFilterProvider().addFilter("monFiltreDynamique", monFiltre);
 
@@ -39,6 +40,7 @@ public class CharacterController {
         return produitsFiltres;
 
     }
+
 
     @RequestMapping(value = "/characters/{id}", method = RequestMethod.GET)
     public Character getCharacter(@PathVariable int id) {
@@ -57,6 +59,16 @@ public class CharacterController {
     @RequestMapping(value = "/characters/getplayable", method = RequestMethod.GET)
     public List<Character> getPlayableCharacter() {
         return characterDao.findByIsNpcFalse();
+    }
+
+    @RequestMapping(value = "/characters/player/{playerName}", method = RequestMethod.GET)
+    public List<Character> getCharacterByPlayer(@PathVariable String playerName) {
+        List<Character> characters = characterDao.findByPlayer(playerName);
+        if (characters.size() == 0) {
+            throw new NoModelException("No character for the player " + playerName);
+        }
+
+        return characterDao.findByPlayer(playerName);
     }
 
     @PostMapping(value = "/characters")

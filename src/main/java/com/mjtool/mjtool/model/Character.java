@@ -1,5 +1,6 @@
 package com.mjtool.mjtool.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mjtool.mjtool.model.enumeration.*;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ public class Character {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private int id;
     @Column(name = "name", nullable = false)
     private String name;
@@ -61,15 +63,17 @@ public class Character {
     private String notes;
     @OneToMany(mappedBy="character")
     private Collection<Attribute> attributes;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "player", nullable = false)
+    private Players player;
 
 
-    public Character(String name) {
-        this.name = name;
+    public Players getPlayer() {
+        return player;
     }
 
-    public Character(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public void setPlayer(Players player) {
+        this.player = player;
     }
 
     public String getSurname() {
@@ -237,7 +241,7 @@ public class Character {
                      Careers careers, AstralSigns astralSigns, Boolean isNpc, int height, int weight, int exp,
                      HairColors hairColor, EyesColors eyeColor, Collection<DistinctiveSign> distinctiveSigns,
                      int numberOfSiblings, Birthplaces birthplace, Collection<Skill> skills, Collection<Trait> traits,
-                     Collection<Spell> spells, String notes) {
+                     Collection<Spell> spells, String notes, Players player) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -258,6 +262,7 @@ public class Character {
         this.traits = traits;
         this.spells = spells;
         this.notes = notes;
+        this.player = player;
     }
 
     public Character() {
