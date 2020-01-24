@@ -61,15 +61,6 @@ public class CharacterController {
         return characterDao.findByIsNpcFalse();
     }
 
-    @RequestMapping(value = "/characters/player/{playerName}", method = RequestMethod.GET)
-    public List<Character> getCharacterByPlayer(@PathVariable String playerName) {
-        List<Character> characters = characterDao.findByPlayer(playerName);
-        if (characters.size() == 0) {
-            throw new NoModelException("No character for the player " + playerName);
-        }
-
-        return characterDao.findByPlayer(playerName);
-    }
 
     @PostMapping(value = "/characters")
     public ResponseEntity<Void> addCharacter(@RequestBody Character charac) {

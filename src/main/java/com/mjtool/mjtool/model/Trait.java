@@ -10,9 +10,6 @@ public class Trait {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @JsonIgnore
-    @ManyToOne
-    private Character character;
     @Column(name = "name")
     private String name;
     @Column(name = "description", columnDefinition="text")
@@ -27,14 +24,6 @@ public class Trait {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Character getCharacter() {
-        return character;
-    }
-
-    public void setCharacter(Character character) {
-        this.character = character;
     }
 
     public String getName() {

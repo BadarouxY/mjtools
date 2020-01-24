@@ -13,5 +13,5 @@ public interface CharacterDao extends JpaRepository<Character, Integer> {
     Character save(Character character);
     List<Character> findByIsNpcTrue();
     List<Character> findByIsNpcFalse();
-    List<Character> findByPlayer(String playerName);
+
 }

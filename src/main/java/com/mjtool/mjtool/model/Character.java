@@ -14,67 +14,61 @@ public class Character {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     private int id;
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
-    @Column(name = "surname", nullable = false)
+    @Column(name = "surname")
     private String surname;
     @Enumerated(EnumType.STRING)
-    @Column(name = "race", nullable = false)
+    @Column(name = "race")
     private Races races;
     @Enumerated(EnumType.STRING)
-    @Column(name = "gender", nullable = false)
+    @Column(name = "gender")
     private Genders genders;
-    @Column(name = "age", nullable = false)
+    @Column(name = "age")
     private int age;
     @Enumerated(EnumType.STRING)
-    @Column(name = "career", nullable = false)
+    @Column(name = "career")
     private Careers careers;
     @Enumerated(EnumType.STRING)
-    @Column(name = "astral_sign", nullable = false)
+    @Column(name = "astral_sign")
     private AstralSigns astralSigns;
-    @Column(name = "is_a_npc", nullable = false)
+    @Column(name = "is_a_npc")
     private Boolean isNpc;
-    @Column(name = "height", nullable = false)
+    @Column(name = "height")
     private int height;
-    @Column(name = "weight", nullable = false)
+    @Column(name = "weight")
     private int weight;
     @Column(name = "exp")
     private int exp;
     @Enumerated(EnumType.STRING)
-    @Column(name = "hair_color", nullable = false)
+    @Column(name = "hair_color")
     private HairColors hairColor;
     @Enumerated(EnumType.STRING)
-    @Column(name = "eyes_color", nullable = false)
+    @Column(name = "eyes_color")
     private EyesColors eyeColor;
-    @OneToMany(mappedBy="character")
+    @ManyToMany
     private Collection<DistinctiveSign> distinctiveSigns;
     @Column(name = "number_of_siblings")
     private int NumberOfSiblings;
     @Enumerated(EnumType.STRING)
-    @Column(name = "birthplace", nullable = false)
+    @Column(name = "birthplace")
     private Birthplaces birthplace;
-    @OneToMany(mappedBy="character")
+    @OneToMany
     private Collection<Skill> skills;
-    @OneToMany(mappedBy="character")
+    @ManyToMany
     private Collection<Trait> traits;
-    @OneToMany(mappedBy="character")
+    @ManyToMany
     private Collection<Spell> spells;
     @Column(name = "notes", columnDefinition="text")
     private String notes;
+    @Column(name = "stuff", columnDefinition="text")
+    private String stuff;
     @OneToMany(mappedBy="character")
     private Collection<Attribute> attributes;
-    @Enumerated(EnumType.STRING)
-    @Column(name = "player", nullable = false)
-    private Players player;
-
-
-    public Players getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Players player) {
-        this.player = player;
-    }
+    @ManyToOne
+    private Personn player;
+    @Column(name = "is_active")
+    private Boolean isActive;
 
     public String getSurname() {
         return surname;
@@ -241,7 +235,7 @@ public class Character {
                      Careers careers, AstralSigns astralSigns, Boolean isNpc, int height, int weight, int exp,
                      HairColors hairColor, EyesColors eyeColor, Collection<DistinctiveSign> distinctiveSigns,
                      int numberOfSiblings, Birthplaces birthplace, Collection<Skill> skills, Collection<Trait> traits,
-                     Collection<Spell> spells, String notes, Players player) {
+                     Collection<Spell> spells, String notes, Personn player) {
         this.id = id;
         this.name = name;
         this.surname = surname;

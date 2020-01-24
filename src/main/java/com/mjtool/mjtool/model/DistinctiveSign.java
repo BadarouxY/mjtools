@@ -11,10 +11,6 @@ public class DistinctiveSign {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @JsonIgnore
-    @ManyToOne
-    private Character character;
-
     @Column(name = "name", nullable = false)
     private String name;
 
@@ -29,13 +25,6 @@ public class DistinctiveSign {
         this.id = id;
     }
 
-    public Character getCharacter() {
-        return character;
-    }
-
-    public void setCharacter(Character character) {
-        this.character = character;
-    }
 
     public String getName() {
         return name;
