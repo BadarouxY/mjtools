@@ -3,17 +3,14 @@ package com.mjtool.mjtool.web.controller;
 import com.mjtool.mjtool.model.enumeration.Careers;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.List;
+import java.util.*;
 
 @CrossOrigin
 @RestController
 public class CareerController {
 
     @RequestMapping(value="/careers", method = RequestMethod.GET)
-    public  Careers[] careerList() {
+    public Careers[] careerList() {
         return Careers.values();
     }
 

@@ -1,7 +1,7 @@
 
 	INSERT INTO public.characters(
-	number_of_siblings, age, astral_sign, birthplace, exp, eyes_color, gender, hair_color, height, is_a_npc, name, notes, race, surname, weight, career)
-	VALUES (2, 25, 'CHEVRE_SAUVAGE', 'GRENOBLE', 1500, 'BLEUS', 'HOMME', 'BRUN', 50, false, 'Coco', 'chouette type', 'ELFE', 'Dylan', 80, 'SERGENT');
+	number_of_siblings, age, astral_sign, birthplace, total_exp, current_exp, eyes_color, gender, hair_color, height, is_a_npc, name, notes, race, surname, weight, career)
+	VALUES (2, 25, 'CHEVRE_SAUVAGE', 'GRENOBLE', 1500, 1000, 'BLEUS', 'HOMME', 'BRUN', 50, false, 'Coco', 'chouette type', 'ELFE', 'Dylan', 80, 'SERGENT');
 
 /*INSERT TRAITS*/
 INSERT INTO traits (description, name) VALUES ('+10% force', 'Force accrue');

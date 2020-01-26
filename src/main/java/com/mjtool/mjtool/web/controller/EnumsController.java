@@ -22,6 +22,8 @@ public class EnumsController {
                 return HairColors.values();
             case "races" :
                 return Races.values();
+            case "skillsname" :
+                return SkillsName.values();
             default:
                 return new Object[0];
         }

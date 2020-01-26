@@ -12,7 +12,6 @@ public class Character {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private int id;
     @Column(name = "name")
     private String name;
@@ -38,34 +37,37 @@ public class Character {
     private int height;
     @Column(name = "weight")
     private int weight;
-    @Column(name = "exp")
-    private int exp;
+    @Column(name = "total_exp")
+    private int totalExp;
+    @Column(name = "current_exp")
+    private int currentExp;
     @Enumerated(EnumType.STRING)
     @Column(name = "hair_color")
     private HairColors hairColor;
     @Enumerated(EnumType.STRING)
     @Column(name = "eyes_color")
     private EyesColors eyeColor;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private Collection<DistinctiveSign> distinctiveSigns;
     @Column(name = "number_of_siblings")
     private int NumberOfSiblings;
     @Enumerated(EnumType.STRING)
     @Column(name = "birthplace")
     private Birthplaces birthplace;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "character_id")
     private Collection<Skill> skills;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private Collection<Trait> traits;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private Collection<Spell> spells;
     @Column(name = "notes", columnDefinition="text")
     private String notes;
     @Column(name = "stuff", columnDefinition="text")
     private String stuff;
-    @OneToMany(mappedBy="character")
+    @OneToMany(mappedBy="character", cascade = CascadeType.ALL)
     private Collection<Attribute> attributes;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Personn player;
     @Column(name = "is_active")
     private Boolean isActive;
@@ -166,13 +168,7 @@ public class Character {
         this.weight = weight;
     }
 
-    public int getExp() {
-        return exp;
-    }
 
-    public void setExp(int exp) {
-        this.exp = exp;
-    }
 
     public HairColors getHairColor() {
         return hairColor;
@@ -230,33 +226,44 @@ public class Character {
         this.birthplace = birthplace;
     }
 
+    public int getTotalExp() {
+        return totalExp;
+    }
 
-    public Character(int id, String name, String surname, Races races, Genders genders, int age,
-                     Careers careers, AstralSigns astralSigns, Boolean isNpc, int height, int weight, int exp,
-                     HairColors hairColor, EyesColors eyeColor, Collection<DistinctiveSign> distinctiveSigns,
-                     int numberOfSiblings, Birthplaces birthplace, Collection<Skill> skills, Collection<Trait> traits,
-                     Collection<Spell> spells, String notes, Personn player) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.races = races;
-        this.genders = genders;
-        this.age = age;
-        this.careers = careers;
-        this.astralSigns = astralSigns;
-        this.isNpc = isNpc;
-        this.height = height;
-        this.weight = weight;
-        this.exp = exp;
-        this.hairColor = hairColor;
-        this.eyeColor = eyeColor;
-        this.distinctiveSigns = distinctiveSigns;
-        this.birthplace = birthplace;
-        this.skills = skills;
-        this.traits = traits;
-        this.spells = spells;
-        this.notes = notes;
+    public void setTotalExp(int totalExp) {
+        this.totalExp = totalExp;
+    }
+
+    public int getCurrentExp() {
+        return currentExp;
+    }
+
+    public void setCurrentExp(int currentExp) {
+        this.currentExp = currentExp;
+    }
+
+    public String getStuff() {
+        return stuff;
+    }
+
+    public void setStuff(String stuff) {
+        this.stuff = stuff;
+    }
+
+    public Personn getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Personn player) {
         this.player = player;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
     }
 
     public Character() {

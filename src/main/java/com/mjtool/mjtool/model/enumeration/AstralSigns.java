@@ -9,12 +9,18 @@ public enum AstralSigns {
    TEST("test");
 
 
-   private String id;
+   private String value;
 
-   AstralSigns(String sign) {
+   AstralSigns(String value) {
+      this.value = value;
    }
 
-   public String getId() {
-      return id;
+   public String getValue() {
+      return value;
    }
+
+   public void setValue(String value) {
+      this.value = value;
+   }
+
 }

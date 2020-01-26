@@ -9,9 +9,10 @@ import javax.persistence.*;
 public class DistinctiveSign {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private int id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
     public DistinctiveSign() {

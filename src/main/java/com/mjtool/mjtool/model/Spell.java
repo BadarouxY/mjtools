@@ -10,7 +10,7 @@ public class Spell {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
     @Column(name = "description", columnDefinition="text")
     private String description;

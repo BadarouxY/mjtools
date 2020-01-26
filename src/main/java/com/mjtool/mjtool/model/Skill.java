@@ -10,14 +10,11 @@ public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @JsonIgnore
-    @ManyToOne
-    private Character character;
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
     @Column(name = "description", columnDefinition="text")
     private String description;
-    @Column(name = "associated_attribute", nullable = false)
+    @Column(name = "associated_attribute")
     private String associatedAttribute;
     @Column(name = "acquired")
     private Boolean acquired;
@@ -27,6 +24,7 @@ public class Skill {
     private Boolean mastered;
     @Column(name = "bonus")
     private int bonus;
+
 
     public Skill() {
     }
@@ -39,13 +37,6 @@ public class Skill {
         this.id = id;
     }
 
-    public Character getCharacter() {
-        return character;
-    }
-
-    public void setCharacter(Character character) {
-        this.character = character;
-    }
 
     public String getName() {
         return name;

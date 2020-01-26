@@ -9,12 +9,11 @@ import javax.persistence.*;
 public class Personn {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private int id;
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
-    @Column(name = "mail", nullable = false)
+    @Column(name = "mail")
     private String mail;
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password;
 }
