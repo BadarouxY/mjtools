@@ -6,8 +6,10 @@ public enum Races {
     HUMAIN("Humain"), ELFE("Elfe"), NAIN("Nain"), HALFLING("Halfling ");
 
     private String value;
+    private String name;
     Races(String value) {
         this.value = value;
+        name = name();
     }
 
     public String getValue() {
@@ -16,5 +18,13 @@ public enum Races {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -7,9 +7,11 @@ public enum Birthplaces {
     GRENOBLE("Grenoble");
 
     private String value;
+    private String name;
 
     Birthplaces(String value) {
         this.value = value;
+        name = name();
     }
 
     public String getValue() {
@@ -18,5 +20,13 @@ public enum Birthplaces {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

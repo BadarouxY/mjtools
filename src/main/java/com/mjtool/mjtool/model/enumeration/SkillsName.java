@@ -7,10 +7,12 @@ public enum SkillsName {
 
     private String value;
     private String associatedAttribute;
+    private String name;
 
     SkillsName(String value, String associatedAttribute) {
         this.value = value;
         this.associatedAttribute = associatedAttribute;
+        name = name();
     }
 
     public String getValue() {
@@ -27,5 +29,13 @@ public enum SkillsName {
 
     public void setAssociatedAttribute(String associatedAttribute) {
         this.associatedAttribute = associatedAttribute;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

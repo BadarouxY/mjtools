@@ -10,9 +10,11 @@ public enum AstralSigns {
 
 
    private String value;
+   private String name;
 
    AstralSigns(String value) {
       this.value = value;
+      name = name();
    }
 
    public String getValue() {
@@ -23,4 +25,11 @@ public enum AstralSigns {
       this.value = value;
    }
 
+   public String getName() {
+      return name;
+   }
+
+   public void setName(String name) {
+      this.name = name;
+   }
 }
