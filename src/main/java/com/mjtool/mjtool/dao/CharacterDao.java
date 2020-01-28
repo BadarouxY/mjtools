@@ -14,4 +14,5 @@ public interface CharacterDao extends JpaRepository<Character, Integer> {
     List<Character> findByIsNpcTrue();
     List<Character> findByIsNpcFalse();
 
+
 }

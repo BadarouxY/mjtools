@@ -71,6 +71,30 @@ public class Character {
     private Personn player;
     @Column(name = "is_active")
     private Boolean isActive;
+    @Column(name = "actual_hp")
+    private int actualHp;
+    @Column(name = "actual_fp")
+    private int actualFp;
+    @Column(name = "random_fp")
+    private int randomFp;
+
+
+
+    public int getActualFp() {
+        return actualFp;
+    }
+
+    public void setActualFp(int actualFp) {
+        this.actualFp = actualFp;
+    }
+
+    public int getActualHp() {
+        return actualHp;
+    }
+
+    public void setActualHp(int actualHp) {
+        this.actualHp = actualHp;
+    }
 
     public String getSurname() {
         return surname;

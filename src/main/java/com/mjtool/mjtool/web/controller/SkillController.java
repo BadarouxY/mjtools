@@ -50,4 +50,9 @@ public class SkillController {
     public void updateSkill(@RequestBody Skill skill) {
         skillDao.save(skill);
     }
+
+//    @RequestMapping(value = "/skills/delete/{name}/{id}", method = RequestMethod.GET)
+//    public void deleteSkill(@PathVariable String name, @PathVariable int id) {
+//        skillDao.deleteSkill(name, id);
+//    }
 }
