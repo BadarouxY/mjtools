@@ -3,16 +3,28 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @JsonFormat(shape=JsonFormat.Shape.OBJECT)
 public enum SkillsName {
-    SURVIE("Survie", "int"), INTIMIDATION("Intimidation", "F");
+    SURVIE("Survie", "int", "permet de survivre"),
+    INTIMIDATION("Intimidation", "F", "permet d'intimider"),
+    NATATION("Natation", "F", "Permet de nager");
 
     private String value;
     private String associatedAttribute;
     private String name;
+    private String description;
 
-    SkillsName(String value, String associatedAttribute) {
+    SkillsName(String value, String associatedAttribute, String description) {
         this.value = value;
         this.associatedAttribute = associatedAttribute;
+        this.description = description;
         name = name();
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getValue() {

@@ -82,4 +82,9 @@ public class CharacterController {
     public void updateCharacter(@RequestBody Character charac) {
         characterDao.save(charac);
     }
+
+    @RequestMapping(value = "/characters/delete/{id}")
+    public void deleteCharacter(@PathVariable int id) {
+        characterDao.deleteById(id);
+    }
 }

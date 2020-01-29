@@ -13,6 +13,7 @@ public interface CharacterDao extends JpaRepository<Character, Integer> {
     Character save(Character character);
     List<Character> findByIsNpcTrue();
     List<Character> findByIsNpcFalse();
+    void deleteById(int id);
 
 
 }

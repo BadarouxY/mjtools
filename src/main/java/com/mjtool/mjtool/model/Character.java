@@ -47,7 +47,7 @@ public class Character {
     @Enumerated(EnumType.STRING)
     @Column(name = "eyes_color")
     private EyesColors eyeColor;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private Collection<DistinctiveSign> distinctiveSigns;
     @Column(name = "number_of_siblings")
     private int NumberOfSiblings;
@@ -57,9 +57,9 @@ public class Character {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "character_id")
     private Collection<Skill> skills;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private Collection<Trait> traits;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private Collection<Spell> spells;
     @Column(name = "notes", columnDefinition="text")
     private String notes;
@@ -67,7 +67,7 @@ public class Character {
     private String stuff;
     @OneToMany(mappedBy="character", cascade = CascadeType.ALL)
     private Collection<Attribute> attributes;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Personn player;
     @Column(name = "is_active")
     private Boolean isActive;
