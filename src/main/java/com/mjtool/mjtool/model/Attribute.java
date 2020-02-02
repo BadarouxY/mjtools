@@ -15,10 +15,38 @@ public class Attribute {
     private Character character;
     @Column(name = "name")
     private String name;
-    @Column(name = "value")
-    private int value;
+    @Column(name = "basic_value")
+    private int basicValue;
+    @Column(name = "career_potential")
+    private int careerPotential;
+    @Column(name = "choosen_value")
+    private int choosenValue;
 
     public Attribute() {
+    }
+
+    public int getBasicValue() {
+        return basicValue;
+    }
+
+    public void setBasicValue(int basicValue) {
+        this.basicValue = basicValue;
+    }
+
+    public int getCareerPotential() {
+        return careerPotential;
+    }
+
+    public void setCareerPotential(int careerPotential) {
+        this.careerPotential = careerPotential;
+    }
+
+    public int getChoosenValue() {
+        return choosenValue;
+    }
+
+    public void setChoosenValue(int choosenValue) {
+        this.choosenValue = choosenValue;
     }
 
     public int getId() {
@@ -45,11 +73,4 @@ public class Attribute {
         this.name = name;
     }
 
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
-    }
 }

@@ -1,6 +1,5 @@
 package com.mjtool.mjtool.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mjtool.mjtool.model.enumeration.*;
 
 import javax.persistence.*;
@@ -47,16 +46,11 @@ public class Character {
     @Enumerated(EnumType.STRING)
     @Column(name = "eyes_color")
     private EyesColors eyeColor;
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    private Collection<DistinctiveSign> distinctiveSigns;
     @Column(name = "number_of_siblings")
-    private int NumberOfSiblings;
+    private int numberOfSiblings;
     @Enumerated(EnumType.STRING)
     @Column(name = "birthplace")
     private Birthplaces birthplace;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "character_id")
-    private Collection<Skill> skills;
     @ManyToMany(cascade = CascadeType.PERSIST)
     private Collection<Trait> traits;
     @ManyToMany(cascade = CascadeType.PERSIST)
@@ -65,8 +59,6 @@ public class Character {
     private String notes;
     @Column(name = "stuff", columnDefinition="text")
     private String stuff;
-    @OneToMany(mappedBy="character", cascade = CascadeType.ALL)
-    private Collection<Attribute> attributes;
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Personn player;
     @Column(name = "is_active")
@@ -78,7 +70,66 @@ public class Character {
     @Column(name = "random_fp")
     private int randomFp;
 
+    @Column(name = "copper")
+    private int copper;
+    @Column(name = "silver")
+    private int silver;
+    @Column(name = "gold")
+    private int gold;
+    @Column(name = "physical_signs", columnDefinition="text")
+    private String physicalSigns;
 
+
+
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "character_id")
+    private Collection<Skill> skills;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "character_id")
+    private Collection<Attribute> attributes;
+
+
+    public int getCopper() {
+        return copper;
+    }
+
+    public void setCopper(int copper) {
+        this.copper = copper;
+    }
+
+    public int getSilver() {
+        return silver;
+    }
+
+    public void setSilver(int silver) {
+        this.silver = silver;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
+    public String getPhysicalSigns() {
+        return physicalSigns;
+    }
+
+    public void setPhysicalSigns(String physicalSigns) {
+        this.physicalSigns = physicalSigns;
+    }
+
+    public int getRandomFp() {
+        return randomFp;
+    }
+
+    public void setRandomFp(int randomFp) {
+        this.randomFp = randomFp;
+    }
 
     public int getActualFp() {
         return actualFp;
@@ -218,14 +269,6 @@ public class Character {
         isNpc = npc;
     }
 
-    public Collection<DistinctiveSign> getDistinctiveSigns() {
-        return distinctiveSigns;
-    }
-
-    public void setDistinctiveSigns(Collection<DistinctiveSign> distinctiveSigns) {
-        this.distinctiveSigns = distinctiveSigns;
-    }
-
     public String getNotes() {
         return notes;
     }
@@ -235,11 +278,11 @@ public class Character {
     }
 
     public int getNumberOfSiblings() {
-        return NumberOfSiblings;
+        return numberOfSiblings;
     }
 
     public void setNumberOfSiblings(int numberOfSiblings) {
-        NumberOfSiblings = numberOfSiblings;
+        this.numberOfSiblings = numberOfSiblings;
     }
 
     public Birthplaces getBirthplace() {

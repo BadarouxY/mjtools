@@ -9,6 +9,7 @@ public enum AstralSigns {
    TEST("test");
 
 
+
    private String value;
    private String name;
 

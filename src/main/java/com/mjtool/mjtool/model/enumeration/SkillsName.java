@@ -3,9 +3,15 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @JsonFormat(shape=JsonFormat.Shape.OBJECT)
 public enum SkillsName {
-    SURVIE("Survie", "int", "permet de survivre"),
-    INTIMIDATION("Intimidation", "F", "permet d'intimider"),
-    NATATION("Natation", "F", "Permet de nager");
+    //page 91 manuel
+    CANOTAGE("Canotage", "F", ""),
+    CHARISME("Charisme", "Soc", ""),
+    COMMANDEMENT("Commandement", "Soc","" ),
+    COMMERAGE("Commérage", "Soc", ""),
+    CONDUITE_ATTELAGES("Conduite_attelages", "F", ""),
+    SURVIE("Survie", "int", ""),
+    INTIMIDATION("Intimidation", "F", ""),
+    NATATION("Natation", "F", "");
 
     private String value;
     private String associatedAttribute;
