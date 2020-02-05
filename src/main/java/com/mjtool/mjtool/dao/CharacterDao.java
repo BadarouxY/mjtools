@@ -2,6 +2,7 @@ package com.mjtool.mjtool.dao;
 
 import com.mjtool.mjtool.model.Character;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,7 +13,9 @@ public interface CharacterDao extends JpaRepository<Character, Integer> {
     Character findById(int id);
     Character save(Character character);
     List<Character> findByIsNpcTrue();
-    List<Character> findByIsNpcFalse();
+    @Query(value = "SELECT c FROM Character c WHERE c.isEnemy = false and c.isNpc = false")
+    List<Character> findPlayables();
+    List<Character> findByIsEnemyTrue();
     void deleteById(int id);
 
 

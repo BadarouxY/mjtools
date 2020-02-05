@@ -32,6 +32,8 @@ public class Character {
     private AstralSigns astralSigns;
     @Column(name = "is_a_npc")
     private Boolean isNpc;
+    @Column(name = "is_enemy")
+    private Boolean isEnemy;
     @Column(name = "height")
     private int height;
     @Column(name = "weight")
@@ -90,6 +92,14 @@ public class Character {
     @JoinColumn(name = "character_id")
     private Collection<Attribute> attributes;
 
+
+    public Boolean getEnemy() {
+        return isEnemy;
+    }
+
+    public void setEnemy(Boolean enemy) {
+        isEnemy = enemy;
+    }
 
     public int getCopper() {
         return copper;

@@ -58,9 +58,13 @@ public class CharacterController {
 
     @RequestMapping(value = "/characters/getplayable", method = RequestMethod.GET)
     public List<Character> getPlayableCharacter() {
-        return characterDao.findByIsNpcFalse();
+        return characterDao.findPlayables();
     }
 
+    @RequestMapping(value = "/characters/getenemies", method = RequestMethod.GET)
+    public List<Character> getEnemies() {
+        return characterDao.findByIsEnemyTrue();
+    }
 
     @PostMapping(value = "/characters")
     public ResponseEntity<Void> addCharacter(@RequestBody Character charac) {
