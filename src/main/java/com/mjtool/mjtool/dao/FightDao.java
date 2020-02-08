@@ -11,4 +11,5 @@ public interface FightDao extends JpaRepository<Fight, Integer> {
     Fight save(Fight fight);
     Fight findById(int id);
     List<Fight> findAll();
+    List<Fight> findByIsEndedFalse();
 }

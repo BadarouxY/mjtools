@@ -46,9 +46,14 @@ public class FightController {
         return fightDao.findById(id);
     }
 
+    @RequestMapping(value = "/fights/inprogress", method = RequestMethod.GET)
+    public Iterable<Fight> getFightInProgress() {
+
+        return fightDao.findByIsEndedFalse();
+    }
 
     @PostMapping(value = "/fights")
-    public ResponseEntity<Void> addAFight(@RequestBody Fight fight) {
+    public ResponseEntity<Void> addFight(@RequestBody Fight fight) {
         Fight fightAdded = fightDao.save(fight);
         if (fightAdded == null) {
             return ResponseEntity.noContent().build();
@@ -67,4 +72,6 @@ public class FightController {
     public void updateAFight(@RequestBody Fight fight) {
         fightDao.save(fight);
     }
+
+
 }
