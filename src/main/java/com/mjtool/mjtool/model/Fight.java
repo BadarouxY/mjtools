@@ -24,9 +24,19 @@ public class Fight {
     private String fightAbstract;
     @Column(name = "is_ended")
     private Boolean isEnded;
+    @Column(name = "round")
+    private int round;
 /*    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "fight")
     private Collection<Action> actions;*/
+
+    public int getRound() {
+        return round;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
 
     public Boolean getEnded() {
         return isEnded;

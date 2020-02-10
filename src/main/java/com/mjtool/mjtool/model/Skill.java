@@ -24,7 +24,26 @@ public class Skill {
     private Boolean mastered;
     @Column(name = "bonus")
     private int bonus;
+    @Column(name = "featured")
+    private Boolean featured;
+    @Column(name = "total")
+    private int total;
 
+    public Boolean getFeatured() {
+        return featured;
+    }
+
+    public void setFeatured(Boolean featured) {
+        this.featured = featured;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
 
     public Skill() {
     }

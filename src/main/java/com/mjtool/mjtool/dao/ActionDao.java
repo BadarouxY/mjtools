@@ -10,5 +10,5 @@ import java.util.List;
 public interface ActionDao extends JpaRepository<Action, Integer> {
     Action save(Action attribute);
     Action findById(int id);
-    List<Action> findByFight(int id);
+    List<Action> findByFightId(int id);
 }
