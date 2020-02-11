@@ -10,12 +10,14 @@ import java.util.List;
 @Repository
 public interface CharacterDao extends JpaRepository<Character, Integer> {
     List<Character> findAll();
+    List<Character> findByIsActiveTrue();
+    List<Character> findByIsActiveFalse();
     Character findById(int id);
     Character save(Character character);
-    List<Character> findByIsNpcTrue();
-    @Query(value = "SELECT c FROM Character c WHERE c.isEnemy = false and c.isNpc = false")
+    List<Character> findByIsNpcTrueAndIsActiveTrue();
+    @Query(value = "SELECT c FROM Character c WHERE c.isEnemy = false and c.isNpc = false and c.isActive = true")
     List<Character> findPlayables();
-    List<Character> findByIsEnemyTrue();
+    List<Character> findByIsEnemyTrueAndIsActiveTrue();
     void deleteById(int id);
 
 

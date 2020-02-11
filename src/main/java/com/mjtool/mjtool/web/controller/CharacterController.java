@@ -53,7 +53,7 @@ public class CharacterController {
 
     @RequestMapping(value = "/characters/getnpc", method = RequestMethod.GET)
     public List<Character> getNpcCharacter() {
-        return characterDao.findByIsNpcTrue();
+        return characterDao.findByIsNpcTrueAndIsActiveTrue();
     }
 
     @RequestMapping(value = "/characters/getplayable", method = RequestMethod.GET)
@@ -61,9 +61,19 @@ public class CharacterController {
         return characterDao.findPlayables();
     }
 
+    @RequestMapping(value = "/characters/actives", method = RequestMethod.GET)
+    public List<Character> getActiveCharacters() {
+        return characterDao.findByIsActiveTrue();
+    }
+
+    @RequestMapping(value = "/characters/inactives", method = RequestMethod.GET)
+    public List<Character> getInactiveCharacters() {
+        return characterDao.findByIsActiveFalse();
+    }
+
     @RequestMapping(value = "/characters/getenemies", method = RequestMethod.GET)
     public List<Character> getEnemies() {
-        return characterDao.findByIsEnemyTrue();
+        return characterDao.findByIsEnemyTrueAndIsActiveTrue();
     }
 
     @PostMapping(value = "/characters")

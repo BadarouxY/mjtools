@@ -80,6 +80,8 @@ public class Character {
     private int gold;
     @Column(name = "physical_signs", columnDefinition="text")
     private String physicalSigns;
+    @Column(name = "smileys")
+    private int smileys;
 
 
 
@@ -92,6 +94,13 @@ public class Character {
     @JoinColumn(name = "character_id")
     private Collection<Attribute> attributes;
 
+    public int getSmileys() {
+        return smileys;
+    }
+
+    public void setSmileys(int smileys) {
+        this.smileys = smileys;
+    }
 
     public Boolean getEnemy() {
         return isEnemy;
