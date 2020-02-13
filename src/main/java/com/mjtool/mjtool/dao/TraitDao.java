@@ -11,4 +11,5 @@ public interface TraitDao extends JpaRepository<Trait, Integer> {
     List<Trait> findAll();
     Trait findById(int id);
     Trait save(Trait trait);
+    void deleteById(int id);
 }

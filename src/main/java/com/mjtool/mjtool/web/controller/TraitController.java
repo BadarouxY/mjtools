@@ -51,4 +51,9 @@ public class TraitController {
     public void updateTrait(@RequestBody Trait trait) {
         traitDao.save(trait);
     }
+
+    @RequestMapping(value = "/trait/delete/{id}")
+    public void deleteTrait(@PathVariable int id) {
+        traitDao.deleteById(id);
+    }
 }
