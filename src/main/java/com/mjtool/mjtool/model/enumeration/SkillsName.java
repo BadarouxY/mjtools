@@ -41,7 +41,7 @@ public enum SkillsName {
     LANGAGE_MYSTIQUE("Langage_mystique", "Int", ""),
     LANGAGE_SECRET("Langage_secret", "Int", ""),
     LECTURE_LEVRES("Lecture_lèvres", "Int", ""),
-    LIRE_ECRIRE("Lire/écrire", "Int", ""),
+    LIRE_ECRIRE("Lire_écrire", "Int", ""),
     NAVIGATION("Navigation", "Ag", ""),
     ORIENTATION("Orientation", "Int", ""),
     PISTAGE("Pistage", "Int", ""),
